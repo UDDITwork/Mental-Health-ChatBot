@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mental Health Chatbot Process</title>
   <link rel="stylesheet" href="style.css">
+   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <style>
       body {
       font-family: Arial, sans-serif;
@@ -221,7 +222,20 @@ pre {
   border-radius: 5px;
   margin: 15px 0;
 }
+.chart-container {
+      margin: 20px auto;
+      padding: 15px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
+    .mermaid {
+      text-align: center;
+      margin-top: 20px;
+      overflow-x: auto;
+    }
     </style>
 </head>
 <body>
@@ -796,6 +810,7 @@ pre {
         </p>
     </section>
     <h1>Chatbot Development Process</h1>
+    <div class="chart-container">
     <div class="mermaid">
       graph TD
       A[Define the Chatbot's Purpose] --> B[Collect and Prepare Data]
@@ -843,6 +858,7 @@ pre {
       H --> H2[Scalable Responses with GPT Models]
       H --> H3[Human Escalation for Critical Users]
     </div>
+    </div>
   
 
     <!-- FAQ -->
@@ -857,6 +873,8 @@ pre {
   <footer>
     <p>&copy; 2024 Mental Health Chatbot Workflow Guide</p>
   </footer>
+ 
+
   <script>
     // Initialize Mermaid.js
     mermaid.initialize({ startOnLoad: true });
