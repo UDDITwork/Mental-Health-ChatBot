@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Health Chatbot Process</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #00509e;
+}
+
+.chart-container {
+  margin: 0 auto;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+}
+
+    h1 {
+      text-align: center;
+      color: #00509e;
+    }
+    h1, h2, h3 {
+      color: #00509e;
+    }
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .nmermaid {
+      background: #f4f4f9;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+    </style>
+</head>
+<body>
+    <header>
+      <h1>Mental Health Chatbot Workflow</h1>
+      <nav>
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#step1">Step 1</a></li>
+          <li><a href="#step2">Step 2</a></li>
+          <li><a href="#step3">Step 3</a></li>
+          <li><a href="#step4">Step 4</a></li>
+          <li><a href="#step5">Step 5</a></li>
+          <li><a href="#step6">Step 6</a></li>
+          <li><a href="#step7">Step 7</a></li>
+          <li><a href="#step8">Step 8</a></li>
+          <li><a href="#step9">Step 9</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <main>
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>
+        This webpage presents the complete process of creating a Mental Health Chatbot. 
+        All the steps, data requirements, algorithms, tools, and strategies described in the Word document 
+        are included here for a comprehensive understanding.
+      </p>
+    </section>
+      <h1>Mental Health Chatbot File Structure</h1>
+      <div class="chart-container">
+        <div class="mermaid">
+          graph TD
+          A[Mental Health Chatbot] --> B[datasets]
+          B --> B1[local]
+          B1 --> B1a[processed_data.json]
+          B --> B2[gcs_data_config.yaml]
+    
+          A --> C[models]
+          C --> C1[emotion_model]
+          C1 --> C1a[model_weights.bin]
+          C1 --> C1b[config.json]
+          C --> C2[intent_model]
+          C2 --> C2a[intent_model.pkl]
+          C2 --> C2b[vectorizer.pkl]
+          C --> C3[embeddings]
+          C3 --> C3a[faiss_index]
+          C3 --> C3b[vectors.npy]
+    
+          A --> D[knowledge_base]
+          D --> D1[responses.json]
+          D --> D2[faq.json]
+          D --> D3[escalation_guidelines.txt]
+    
+          A --> E[backend]
+          E --> E1[app.py]
+          E --> E2[routes]
+          E2 --> E2a[chat_routes.py]
+          E2 --> E2b[cloud_connect.py]
+          E --> E3[utils]
+          E3 --> E3a[preprocessing.py]
+          E3 --> E3b[emotion_analysis.py]
+          E3 --> E3c[response_retrieval.py]
+          E3 --> E3d[gcs_utils.py]
+          E3 --> E3e[intent_detection.py]
+          E --> E4[config.yaml]
+    
+          A --> F[frontend]
+          F --> F1[public]
+          F1 --> F1a[index.html]
+          F1 --> F1b[styles.css]
+          F1 --> F1c[chatbot_icon.png]
+          F --> F2[src]
+          F2 --> F2a[App.js]
+          F2 --> F2b[ChatBox.js]
+          F2 --> F2c[api.js]
+          F --> F3[package.json]
+    
+          A --> G[cloud_storage]
+          G --> G1[fetch_papers.py]
+          G --> G2[upload_papers.py]
+          G --> G3[gcs_credentials.json]
+          G --> G4[sync_scripts]
+          G4 --> G4a[sync_to_gcs.sh]
+          G4 --> G4b[sync_from_gcs.sh]
+    
+          A --> H[tests]
+          H --> H1[test_preprocessing.py]
+          H --> H2[test_emotion_analysis.py]
+          H --> H3[test_gcs_integration.py]
+    
+          A --> I[logs]
+          I --> I1[chatbot.log]
+          I --> I2[error.log]
+          I --> I3[gcs_sync.log]
+    
+          A --> J[deployment]
+          J --> J1[Dockerfile]
+          J --> J2[docker-compose.yaml]
+          J --> J3[cloud_run_deploy.sh]
+          J --> J4[requirements.txt]
+    
+          A --> K[README.md]
+        </div>
+      </div>
+      <section id="whats-new">
+        <h2>What's New in This Structure</h2>
+        <p>
+          Below are the recent additions and updates in the mental health chatbot's structure:
+        </p>
+        <ul>
+          <li>
+            <b>datasets/gcs_data_config.yaml:</b> Config file for specifying Google Cloud bucket names and file paths.
+          </li>
+          <li>
+            <b>backend/routes/cloud_connect.py:</b> Backend route to fetch research papers dynamically from Google Cloud Storage.
+          </li>
+          <li>
+            <b>cloud_storage/:</b> Dedicated folder for scripts and credentials to handle cloud storage tasks:
+            <ul>
+              <li><b>fetch_papers.py:</b> Fetch papers from the cloud.</li>
+              <li><b>upload_papers.py:</b> Upload papers to the cloud.</li>
+              <li><b>sync_scripts/:</b> Shell scripts to automate sync tasks.</li>
+            </ul>
+          </li>
+          <li>
+            <b>Integration Code for Google Cloud:</b> 
+            <ul>
+              <li><b>gcs_utils.py:</b> Python functions for connecting with Google Cloud Storage using the google-cloud-storage library.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      
+      
+    <!-- Step 1 -->
+    <section id="step1">
+      
+      <h1>Step 1: Define the Project Scope</h1>
+      <h2>Goal</h2>
+      <p>
+        Support users with mental health issues by providing empathetic responses, general advice, or referrals to resources.
+      </p>
+    
+      <h2>Key Features</h2>
+      <p>Specific resources, including articles and research papers, corresponding to each of the key features mentioned in Step 1, Point 2:</p>
+      
+      <h3>1. Sentiment Analysis to Understand Emotions</h3>
+      <ul>
+        <li><a href="https://link.springer.com/article/10.1007/s13278-021-00776-6" target="_blank">Research Paper: A Review on Sentiment Analysis and Emotion Detection from Text</a></li>
+        <li><a href="https://arxiv.org/abs/2111.03715" target="_blank">Research Paper: Leveraging Sentiment Analysis Knowledge to Solve Emotion Detection Tasks</a></li>
+      </ul>
+      <p>This paper provides an overview of sentiment analysis and emotion detection techniques.</p>
+      <p>This study explores how sentiment analysis can be applied to emotion detection tasks.</p>
+      
+      <h3>2. Support for Queries Related to Anxiety, Depression, Stress, etc.</h3>
+      <ul>
+        <li><a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2023.1190326/full" target="_blank">Research Paper: Detection of Emotion by Text Analysis Using Machine Learning</a></li>
+        <li><a href="https://link.springer.com/article/10.1007/s10209-024-01118-x" target="_blank">Research Paper: A Systematic Review of Chatbots in Inclusive Healthcare</a></li>
+      </ul>
+      <p>This paper discusses methods for detecting emotions such as anxiety and depression through text analysis.</p>
+      <p>This review examines the use of chatbots in healthcare settings, including mental health support.</p>
+    
+      <h3>3. Multilingual Support (Optional)</h3>
+      <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Multimodal_sentiment_analysis" target="_blank">Research Paper: Multimodal Sentiment Analysis: A Survey</a></li>
+        <li><a href="https://arxiv.org/pdf/2201.06657v1" target="_blank">Research Paper: A Literature Survey of Recent Advances in Chatbots</a></li>
+      </ul>
+      <p>This survey covers techniques for sentiment analysis across different languages and modalities.</p>
+      <p>This paper reviews advancements in chatbot technology, including multilingual capabilities.</p>
+    
+      <h3>4. Human Escalation if Needed</h3>
+      <ul>
+        <li><a href="https://link.springer.com/article/10.1007/s00607-021-01016-7" target="_blank">Research Paper: Future Directions for Chatbot Research</a></li>
+        <li><a href="https://www.mdpi.com/2078-2489/15/4/226" target="_blank">Research Paper: Chatbot Design and Implementation</a></li>
+      </ul>
+      <p>This paper discusses the importance of human–chatbot collaboration and escalation strategies.</p>
+      <p>This study explores design considerations for chatbots, including human intervention mechanisms.</p>
+    
+      <h2>Algorithms Used for Sentiment Analysis</h2>
+      <p>Sentiment analysis is a core component for understanding user emotions and moods. Key algorithms include:</p>
+      <ul>
+        <li><b>VADER:</b> Lightweight and quick sentiment detection for positive, negative, or neutral sentiments.</li>
+        <li><b>TextBlob:</b> Simpler tasks, including sentiment polarity calculation.</li>
+        <li><b>BERT:</b> Contextual and deep-level sentiment understanding, fine-tuned for mental health datasets.</li>
+        <li><b>RoBERTa:</b> Improved version of BERT for better accuracy in sentiment detection.</li>
+        <li><b>DistilBERT:</b> Faster and lightweight transformer for emotion identification.</li>
+        <li><b>LSTM:</b> For sequential data and user interaction contexts.</li>
+        <li><b>XGBoost/Random Forest:</b> Useful for rule-based sentiment analysis.</li>
+      </ul>
+    
+      <h2>Example Workflow</h2>
+      <p>
+        User Input: <q>Mujhe lagta hai main kuch bhi thik se nahi kar sakta.</q>
+      </p>
+      <ul>
+        <li>Sentiment Analysis Applied:
+          <ul>
+            <li>Text is tokenized and processed.</li>
+            <li>Sentiment Score Calculated:
+              <ul>
+                <li>Negative: 0.85</li>
+                <li>Neutral: 0.10</li>
+                <li>Positive: 0.05</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Output Sentiment: Negative sentiment detected.</li>
+        <li>Chatbot Response: <q>Mujhe afsos hai ki aap aisa mehsoos kar rahe ho. Main yaha hoon madad karne ke liye.</q></li>
+      </ul>
+    
+      <h2>Libraries Used</h2>
+      <ul>
+        <li><b>transformers (Hugging Face):</b> Models like BERT, RoBERTa.</li>
+        <li><b>nltk, spaCy:</b> Text preprocessing and tokenization.</li>
+        <li><b>vaderSentiment:</b> Lightweight sentiment analysis.</li>
+        <li><b>pandas:</b> For data handling.</li>
+        <li><b>scikit-learn:</b> For basic ML models.</li>
+      </ul>
+    </body>
+    </html>
+    </section>
+
+    <!-- Step 2 -->
+    <section id="step2">
+      <h2>Step 2: Data Collection</h2>
+     
+
+        <!-- Step 2: Data Collection -->
+        <h1>Step 2: Data Collection</h1>
+        <h2>Sources for Mental Health Datasets:</h2>
+        <h3>Annotated Data:</h3>
+        <ul>
+          <li><b>Kaggle:</b> <a href="https://www.kaggle.com/" target="_blank">https://www.kaggle.com/</a></li>
+          <li>GitHub repositories for annotated mental health datasets.</li>
+          <li><b>Papers with Code:</b> <a href="https://paperswithcode.com/" target="_blank">https://paperswithcode.com/</a></li>
+        </ul>
+        
+        <h3>Pre-existing Mental Health Datasets:</h3>
+        <ul>
+          <li><b>WHO Mental Health Atlas (2020):</b> <a href="https://www.who.int/teams/mental-health-and-substance-use/data-research/mental-health-atlas" target="_blank">https://www.who.int/teams/mental-health-and-substance-use/data-research/mental-health-atlas</a></li>
+          <li><b>NIMH:</b> <a href="https://www.nimh.nih.gov/" target="_blank">https://www.nimh.nih.gov/</a></li>
+          <li><b>Mental Health in Tech Survey:</b> <a href="https://osf.io/j5txr/" target="_blank">https://osf.io/j5txr/</a></li>
+        </ul>
+        
+        <h3>Rule-Based Data Sources:</h3>
+        <ul>
+          <li>Reddit communities like <b>r/depression</b>, <b>r/Anxiety</b>.</li>
+          <li>Therapy chatbot datasets (search “therapy datasets Kaggle”).</li>
+        </ul>
+        
+        <h3>Convert Articles/Research to CSV/Excel:</h3>
+        <h4>Tools:</h4>
+        <ul>
+          <li><b>BeautifulSoup for web scraping:</b> <a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank">https://www.crummy.com/software/BeautifulSoup/</a></li>
+          <li><b>pdfplumber for PDF extraction:</b> <a href="https://github.com/jsvine/pdfplumber" target="_blank">https://github.com/jsvine/pdfplumber</a></li>
+          <li><b>PyPDF2 for extracting text from PDFs:</b> <a href="https://github.com/py-pdf/PyPDF2" target="_blank">https://github.com/py-pdf/PyPDF2</a></li>
+        </ul>
+        
+        <h4>Steps:</h4>
+        <ul>
+          <li>Extract text using tools above.</li>
+          <li>Preprocess using Python libraries (<b>re</b>, <b>nltk</b>).</li>
+          <li>Save structured data in CSV using <b>pandas</b>.</li>
+        </ul>
+      
+        <!-- Step 3: Data Annotation -->
+        <h1>Step 3: Data Annotation</h1>
+        <p>Annotate user intents (greeting, seeking support, crisis).</p>
+        <p>Label emotions (happy, sad, angry, anxious).</p>
+        <h3>Tools for Annotation:</h3>
+        <ul>
+          <li><b>Prodigy:</b> <a href="https://prodi.gy/" target="_blank">https://prodi.gy/</a></li>
+          <li><b>Label Studio:</b> <a href="https://labelstud.io/" target="_blank">https://labelstud.io/</a></li>
+        </ul>
+      
+        <!-- Step 4: Data Storage -->
+        <h1>Step 4: Data Storage</h1>
+        <h2>Formats:</h2>
+        <ul>
+          <li>CSV for tabular data.</li>
+          <li>JSON for conversational data.</li>
+          <li>Parquet for efficient storage of large datasets.</li>
+        </ul>
+        
+        <h2>Storage Options:</h2>
+        <ul>
+          <li><b>Local Databases:</b> SQLite, MySQL.</li>
+          <li><b>Cloud Storage:</b> 
+            <a href="https://cloud.google.com/storage" target="_blank">Google Cloud Storage</a>, 
+            <a href="https://aws.amazon.com/s3/" target="_blank">AWS S3</a>.
+          </li>
+          <li><b>Vector Databases for embeddings:</b> 
+            <a href="https://www.pinecone.io/" target="_blank">Pinecone</a>, 
+            <a href="https://weaviate.io/" target="_blank">Weaviate</a>.
+          </li>
+        </ul>
+      
+      
+    </section>
+
+    <!-- Step 3 -->
+    <section id="step3">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Mental Health Chatbot Process</title>
+        </head>
+        <body>
+            <h1>Mental Health Chatbot Process</h1>
+        
+            <h2>Extract Data from Research Papers</h2>
+            <h3>Tools for Extraction:</h3>
+            <ul>
+                <li><b>PyPDF2:</b> <a href="https://github.com/py-pdf/PyPDF2" target="_blank">Extract text from PDFs.</a></li>
+                <li><b>pdfplumber:</b> <a href="https://github.com/jsvine/pdfplumber" target="_blank">Advanced PDF text extraction.</a></li>
+                <li><b>Grobid:</b> <a href="https://github.com/kermitt2/grobid" target="_blank">Extract and structure bibliographic information from research papers.</a></li>
+            </ul>
+        
+            <h3>Process:</h3>
+            <ul>
+                <li>Load the PDF.</li>
+                <li>Extract textual content (abstract, body text, conclusions).</li>
+                <li>Preprocess the text (remove special characters, unwanted line breaks, etc.).</li>
+            </ul>
+        
+            <h3>Example Code Using pdfplumber:</h3>
+            <pre>
+        import pdfplumber
+        import pandas as pd
+        
+        # Load the PDF
+        with pdfplumber.open('research_paper.pdf') as pdf:
+            data = []
+            for page in pdf.pages:
+                text = page.extract_text()
+                data.append(text)
+        
+        # Convert extracted text into a structured format
+        df = pd.DataFrame(data, columns=['Content'])
+        df.to_csv('research_paper_data.csv', index=False)
+            </pre>
+        
+            <h2>Extract Data from Internet Articles</h2>
+            <h3>Tools for Scraping:</h3>
+            <ul>
+                <li><b>BeautifulSoup:</b> <a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank">Scrape HTML content from websites.</a></li>
+                <li><b>Selenium:</b> <a href="https://www.selenium.dev/" target="_blank">Automate web scraping for dynamic websites.</a></li>
+                <li><b>Newspaper3k:</b> <a href="https://github.com/codelucas/newspaper" target="_blank">Extract and summarize content from news articles.</a></li>
+            </ul>
+        
+            <h3>Process:</h3>
+            <ul>
+                <li>Fetch the HTML content of the article.</li>
+                <li>Parse and extract relevant sections (e.g., title, paragraphs, metadata).</li>
+                <li>Clean the text and structure it into a table or JSON format.</li>
+            </ul>
+        
+            <h3>Example Code Using BeautifulSoup:</h3>
+            <pre>
+        from bs4 import BeautifulSoup
+        import requests
+        import pandas as pd
+        
+        # Fetch the web page
+        url = "https://example.com/article"
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Extract relevant data
+        title = soup.find('h1').text
+        content = ' '.join([p.text for p in soup.find_all('p')])
+        
+        # Structure the data
+        data = {'Title': [title], 'Content': [content]}
+        df = pd.DataFrame(data)
+        df.to_csv('article_data.csv', index=False)
+            </pre>
+        
+            <h2>Convert Extracted Data into Usable Formats</h2>
+            <h3>CSV (Tabular Data):</h3>
+            <p>Use pandas to save the structured data into a CSV file:</p>
+            <pre>
+        df.to_csv('data.csv', index=False)
+            </pre>
+        
+            <h3>JSON (Conversational Data):</h3>
+            <p>Use Python’s built-in json module to save data:</p>
+            <pre>
+        import json
+        
+        data = {'Title': title, 'Content': content}
+        with open('data.json', 'w') as f:
+            json.dump(data, f)
+            </pre>
+        
+            <h3>Parquet (Efficient for Large Datasets):</h3>
+            <p>Use pandas to save data in Parquet format for better compression and fast I/O:</p>
+            <pre>
+        df.to_parquet('data.parquet')
+            </pre>
+        
+            <h2>Store Data Locally or on Cloud</h2>
+            <h3>Local Databases:</h3>
+            <h4>SQLite:</h4>
+            <pre>
+        import sqlite3
+        
+        conn = sqlite3.connect('research.db')
+        df.to_sql('research_table', conn, if_exists='replace', index=False)
+        conn.close()
+            </pre>
+        
+            <h4>MySQL:</h4>
+            <p>Install MySQL and connect using Python’s mysql.connector library.</p>
+        
+            <h3>Cloud Storage:</h3>
+            <h4>Google Cloud Storage:</h4>
+            <pre>
+        pip install google-cloud-storage
+        
+        from google.cloud import storage
+        
+        client = storage.Client()
+        bucket = client.get_bucket('my-bucket-name')
+        blob = bucket.blob('data.csv')
+        blob.upload_from_filename('data.csv')
+            </pre>
+        
+            <h4>AWS S3:</h4>
+            <pre>
+        pip install boto3
+        
+        import boto3
+        
+        s3 = boto3.client('s3')
+        s3.upload_file('data.csv', 'my-bucket', 'data.csv')
+            </pre>
+        
+            <h2>Store Embeddings for Faster Access</h2>
+            <h3>Vector Databases for Embeddings:</h3>
+            <h4>Pinecone:</h4>
+            <p><a href="https://www.pinecone.io/" target="_blank">Store and retrieve embeddings for efficient semantic search.</a></p>
+            <pre>
+        import pinecone
+        
+        pinecone.init(api_key='your-api-key', environment='us-west1-gcp')
+        index = pinecone.Index("mental-health-embeddings")
+        index.upsert([
+            ("id1", [0.1, 0.2, 0.3]),  # Example embeddings
+            ("id2", [0.4, 0.5, 0.6])
+        ])
+            </pre>
+        
+            <h4>Weaviate:</h4>
+            <p><a href="https://weaviate.io/" target="_blank">Store embeddings with metadata for semantic search.</a></p>
+        
+            <h2>Automate the Conversion Process</h2>
+            <ul>
+                <li><a href="https://airflow.apache.org/" target="_blank">Apache Airflow:</a> Schedule and manage data pipelines.</li>
+                <li><a href="https://www.prefect.io/" target="_blank">Prefect:</a> Build workflows for data extraction and storage.</li>
+            </ul>
+       
+        
+    </section>
+
+    <!-- Step 4 -->
+    <section id="step4">
+        <h1>Backend</h1>
+        <h2>Step 6: Build the Chatbot Backend</h2>
+      
+        <h3>Architecture Overview:</h3>
+        <ul>
+          <li><b>NLP</b> for query understanding.</li>
+          <li><b>Machine Learning (ML)/Deep Learning (DL)</b> for sentiment and emotion detection.</li>
+          <li><b>Knowledge Base</b> for response generation.</li>
+        </ul>
+      
+        <h3>Technologies for Each Stage:</h3>
+        <h4>NLP Models:</h4>
+        <ul>
+          <li><a href="https://huggingface.co/" target="_blank">Hugging Face Transformers</a></li>
+          <li><a href="https://platform.openai.com/" target="_blank">GPT-based Models</a></li>
+        </ul>
+      
+        <h4>Emotion Analysis:</h4>
+        <ul>
+          <li>Pre-trained models like roBERTa, DistilBERT.</li>
+          <li><a href="https://huggingface.co/docs/transformers/" target="_blank">transformers</a> library</li>
+        </ul>
+      
+        <h4>Keyword Extraction:</h4>
+        <ul>
+          <li>TF-IDF or Latent Dirichlet Allocation (LDA)</li>
+        </ul>
+      
+        <h4>Response Retrieval:</h4>
+        <ul>
+          <li>Algorithms:</li>
+          <ul>
+            <li>Semantic Search: BM25, <a href="https://github.com/facebookresearch/faiss" target="_blank">FAISS</a></li>
+            <li>Vector Similarity: Cosine similarity using sentence embeddings</li>
+          </ul>
+        </ul>
+      
+        <h3>Backend Development Process:</h3>
+        <p>
+          A chatbot backend banane ke liye sabse pehle user query ko process karna hoga using NLP, jahan text ko clean karne ke liye
+          tokenization, stop-word removal, aur lemmatization karte hain. Phir pre-trained models jaise BERT ya RoBERTa ka use karke
+          user ke emotions aur intent samajhte hain, jaise ki user sad hai ya stressed.
+        </p>
+        <p>
+          Query me se important keywords extract karte hain using TF-IDF ya LDA, jo chatbot ko relevant response dhoondhne me help karega.
+          Uske baad semantic search algorithms jaise BM25 ya vector similarity (cosine similarity) ka use karke query ko database ke
+          embeddings ke saath match karte hain aur sahi jawab retrieve karte hain.
+        </p>
+        <p>
+          Backend ke liye Flask ya FastAPI ka use karte hain, jo frontend (React.js) ke saath connect hota hai aur user ko empathetic aur
+          context-aware response provide karta hai. Is process me NLP, ML/DL, aur advanced algorithms ka combination chatbot ko
+          intelligent aur responsive banata hai.
+        </p>
+      
+        <h2>Backend Banane Ka Kaam Shuru Hua:</h2>
+      
+        <h3>Step 1: User Query Ko Samajhna (NLP for Query Understanding)</h3>
+        <p>
+          Sabse pehle chatbot ko user ki baat samajhni hai. Maan lo, user likhta hai, "Mujhe bohot udaas lag raha hai, main kya karu?" Toh:
+        </p>
+        <h4>NLP Models:</h4>
+        <ul>
+          <li>Is query ko tokenization, stop-word removal, aur lemmatization se clean karenge.</li>
+          <li>Hugging Face Transformers ka use karenge, jaise BERT ya RoBERTa, jo query ka context samajh sake.</li>
+        </ul>
+        <p><b>Tools:</b> <a href="https://huggingface.co/" target="_blank">Hugging Face Transformers Library</a></p>
+      
+        <h3>Step 2: User Ke Emotions Samajhna (ML/DL for Sentiment & Emotion Detection)</h3>
+        <p>
+          Chatbot ko user ke emotions pe kaam karna hai. Agar user sad ya anxious hai, toh chatbot ka response empathetic hoga.
+        </p>
+        <h4>Emotion Analysis Models:</h4>
+        <ul>
+          <li>Pre-trained models jaise DistilBERT ya RoBERTa use karenge, jo user ke text me emotions detect kare.</li>
+          <li>Libraries: <a href="https://huggingface.co/docs/transformers/" target="_blank">transformers</a></li>
+        </ul>
+      
+        <h3>Step 3: Keywords Nikalna (Keyword Extraction)</h3>
+        <p>Ab query se important keywords nikalne hain, jo chatbot ko help karenge sahi jawab dene me.</p>
+        <h4>Algorithms:</h4>
+        <ul>
+          <li>TF-IDF: Query ke important words ki weightage calculate karta hai.</li>
+          <li>LDA (Latent Dirichlet Allocation): Topics extract karta hai text se.</li>
+        </ul>
+      
+        <h3>Step 4: Response Retrieval (Answer Dhoondhna)</h3>
+        <p>Ab chatbot ko apne knowledge base se sahi jawab dhoondhna hai.</p>
+        <h4>Algorithms:</h4>
+        <ul>
+          <li>Semantic Search: BM25, <a href="https://github.com/facebookresearch/faiss" target="_blank">FAISS</a></li>
+          <li>Vector Similarity: Cosine similarity using sentence embeddings</li>
+        </ul>
+      
+        <h3>Step 5: Response Send Karna</h3>
+        <p>Ab chatbot ka response user ko bhejna hai. Yeh backend se frontend par jayega.</p>
+        <h4>Technologies:</h4>
+        <ul>
+          <li>Flask/FastAPI: Backend server banane ke liye.</li>
+          <li>React.js/HTML: Frontend banane ke liye.</li>
+        </ul>
+      
+        <h2>Conclusion</h2>
+        <p>
+          Chatbot user ke query ka intent aur emotion samajhta hai, keywords extract karta hai, aur apne knowledge base se relevant jawab
+          nikal kar user ko send karta hai.
+        </p>
+    </section>
+    <h1>Chatbot Development Process</h1>
+    <div class="nmermaid">
+      graph TD
+      A[Define the Chatbot's Purpose] --> B[Collect and Prepare Data]
+      B --> B1[Annotated Datasets]
+      B --> B2[Pre-trained Datasets]
+      B --> B3[Manual Annotation]
+      B3 --> B3a[Use Tools like Prodigy, Label Studio]
+  
+      B --> C[Preprocess Data]
+      C --> C1[Clean Data]
+      C1 --> C1a[Remove HTML Tags, Emojis, Special Characters]
+      C --> C2[Tokenization]
+      C --> C3[Stop-word Removal]
+      C --> C4[Lemmatization]
+  
+      C --> D[Train Models]
+      D --> D1[Train Intent Recognition Models]
+      D1 --> D1a[Using Frameworks like TensorFlow, PyTorch]
+      D --> D2[Train Sentiment and Emotion Detection Models]
+      D2 --> D2a[Use Pre-trained Models like BERT, RoBERTa]
+      D --> D3[Evaluate Models]
+      D3 --> D3a[Metrics: Accuracy, F1 Score, Loss]
+  
+      D --> E[Build Chatbot Backend]
+      E --> E1[Connect NLP Models to Backend]
+      E1 --> E1a[Technologies: Flask, FastAPI]
+      E --> E2[Connect Backend to Knowledge Base]
+      E2 --> E2a[Static Responses, Dynamic Query Matching]
+      E --> E3[Use APIs for Emotion Detection]
+      E3 --> E3a[Examples: Hugging Face, IBM Watson]
+  
+      E --> F[Integrate Frontend]
+      F --> F1[Build Chat Interface]
+      F1 --> F1a[Technologies: React.js, HTML, CSS]
+      F --> F2[Connect Frontend to Backend APIs]
+  
+      F --> G[Deploy Chatbot]
+      G --> G1[Local Deployment: Docker Containers]
+      G --> G2[Cloud Deployment: AWS, Google Cloud]
+      G --> G3[Monitor Performance]
+      G3 --> G3a[Tools: DataDog, Loggly]
+  
+      G --> H[Enhance Chatbot]
+      H --> H1[Emotion Recognition]
+      H --> H2[Scalable Responses with GPT Models]
+      H --> H3[Human Escalation for Critical Users]
+    </div>
+  
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>Frequently Asked Questions (FAQ)</h2>
+      <p>
+        <!-- Insert FAQ content here -->
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Mental Health Chatbot Workflow Guide</p>
+  </footer>
+  <script>
+    // Initialize Mermaid.js
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</body>
+</html>
